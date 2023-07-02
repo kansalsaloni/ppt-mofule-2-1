@@ -1,0 +1,61 @@
+Q1=>. Write a function that takes a list of numbers as input and returns a new list containing only the even numbers from the input list. Use list comprehension to solve this problem.
+ANS=>
+def get_even_numbers(numbers):
+    even_numbers = [num for num in numbers if num % 2 == 0]
+    return even_numbers
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = get_even_numbers(numbers)
+print(result)  # Output: [2, 4, 6, 8, 10]
+
+
+##########################################################################################################################################
+Q2=>Implement a decorator function called ‘timer’ that measures the execution time of a function. The ‘timer’ decorator should print the time taken by the decorated function to execute. Use the ‘time’ module in Python to calculate the execution time.
+
+import time
+
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        execution_time = end_time - start_time
+        print(f"Execution time: {execution_time:.5f} seconds")
+        return result
+    return wrapper
+@timer
+def my_function():
+    time.sleep(2)
+
+my_function()
+
+
+##########################################################################################################################################
+Q3=> Write a function called ‘calculate_mean’ that takes a list of numbers as input and returns the mean (average) of the numbers. The function should calculate the mean using the sum of the numbers divided by the total count.
+
+def calculate_mean(numbers):
+    total = sum(numbers)
+    count = len(numbers)
+    if count > 0:
+        mean = total / count
+        return mean
+    else:
+        return None
+numbers = [2, 4, 6, 8, 10]
+mean = calculate_mean(numbers)
+print(mean)  # Output: 6.0
+
+##########################################################################################################################################
+Q4=> Write a function called ‘perform_hypothesis_test’ that takes two lists of numbers as input, representing two samples. The function should perform a two-sample t-test and return the p-value. Use the ‘scipy.stats’ module in Python to calculate the t-test and p-value.
+from scipy.stats import ttest_ind
+
+def perform_hypothesis_test(sample1, sample2):
+    t_statistic, p_value = ttest_ind(sample1, sample2)
+    return p_value
+sample1 = [1, 2, 3, 4, 5]
+sample2 = [6, 7, 8, 9, 10]
+p_value = perform_hypothesis_test(sample1, sample2)
+print(p_value)
+
+
+##########################################################################################################################################
